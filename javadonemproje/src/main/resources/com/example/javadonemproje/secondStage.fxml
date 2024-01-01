@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxWidth="-Infinity" prefHeight="623.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javadonemproje.HelloController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a0adb9" height="200.0" layoutX="228.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a0adb9" height="278.0" layoutX="8.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <RadioButton fx:id="sahis" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#engelKaldır" text="Şahıs">
+         <toggleGroup>
+            <ToggleGroup fx:id="musteri" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="firma" layoutX="125.0" layoutY="24.0" mnemonicParsing="false" onAction="#engel" text="Firma" toggleGroup="$musteri" />
+      <TextField fx:id="text1" layoutX="32.0" layoutY="71.0" promptText="İsim/Firma Adı" style="-fx-background-radius: 8;" />
+      <TextField fx:id="text2" layoutX="32.0" layoutY="110.0" promptText="Soyisim" style="-fx-background-radius: 8;" />
+      <TextField fx:id="text3" layoutX="32.0" layoutY="153.0" promptText="Telefon No" style="-fx-background-radius: 8;" />
+      <TextField fx:id="text4" layoutX="32.0" layoutY="190.0" promptText="Vergi Kimlik No" style="-fx-background-radius: 8;" />
+      <Button fx:id="musteriButton" layoutX="64.0" layoutY="239.0" mnemonicParsing="false" onAction="#musteriEkle" prefHeight="30.0" style="-fx-background-radius: 8; -fx-background-color: DODGERBLUE;" text="Müsteri Ekle" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Line endX="192.5999755859375" layoutX="-211.0" layoutY="332.0" startX="-100.0" />
+      <ComboBox fx:id="musteriCombo" layoutX="228.0" layoutY="39.0" prefWidth="150.0" promptText="Müşteri" />
+      <Label layoutX="228.0" layoutY="15.0" text="Müşteri İşlemleri:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Line endX="9.092864990234375" endY="-12.192899703979492" layoutX="208.0" layoutY="22.0" startX="9.299972534179688" startY="264.6000061035156" />
+      <Line endX="444.10711669921875" endY="0.09999656677246094" layoutX="218.0" layoutY="9.0" startX="-0.2000274658203125" startY="0.09999370574951172" />
+      <Button fx:id="musteriFatura" layoutX="285.0" layoutY="232.0" mnemonicParsing="false" onAction="#faturaEkle" prefHeight="30.0" prefWidth="82.0" style="-fx-background-radius: 8; -fx-background-color: DODGERBLUE;" text="Fatura Ekle" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="440.0" layoutY="239.0" mnemonicParsing="false" onAction="#kdvHesapla" prefHeight="30.0" prefWidth="98.0" style="-fx-background-radius: 8; -fx-background-color: DODGERBLUE;" text="Kdv Hesapla" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="gelirButton" layoutX="440.0" layoutY="95.0" mnemonicParsing="false" onAction="#gelirHesapla" prefHeight="30.0" prefWidth="98.0" style="-fx-background-radius: 8; -fx-background-color: DODGERBLUE;" text="Gelir Hesapla" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="440.0" layoutY="163.0" mnemonicParsing="false" onAction="#giderHesapla" prefHeight="30.0" prefWidth="98.0" style="-fx-background-radius: 8; -fx-background-color: DODGERBLUE;" text="Gider Hesapla" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TextField fx:id="musteriText1" layoutX="241.0" layoutY="143.0" prefHeight="26.0" prefWidth="87.0" promptText="Ürün Adi" />
+      <TextField fx:id="musteriText2" layoutX="331.0" layoutY="143.0" onKeyReleased="#toplamFiyatDüzenle" prefHeight="26.0" prefWidth="87.0" promptText="Ürün Miktarı" />
+      <TextField fx:id="musteriText4" editable="false" layoutX="331.0" layoutY="189.0" prefHeight="26.0" prefWidth="87.0" promptText="Toplam Fiyat" />
+      <TextField fx:id="musteriText3" layoutX="241.0" layoutY="189.0" onKeyReleased="#toplamFiyatDüzenle" prefHeight="26.0" prefWidth="87.0" promptText="Birim Fiyat" />
+      <ComboBox fx:id="faturaCombo" layoutX="256.0" layoutY="96.0" onMousePressed="#comboEvent" prefHeight="28.0" prefWidth="150.0" promptText="Fatura Tipi" />
+      <TableView fx:id="table" layoutX="6.0" layoutY="302.0" prefHeight="310.0" prefWidth="469.0">
+        <columns>
+          <TableColumn fx:id="faturaSahibi" prefWidth="80.79998588562012" text="Fatura Sahibi" />
+          <TableColumn fx:id="faturaTuru" prefWidth="69.59998321533203" text="Fatura Tipi" />
+            <TableColumn fx:id="urunAdi" prefWidth="66.4000244140625" text="Ürün Adi" />
+            <TableColumn fx:id="miktar" prefWidth="84.0" text="Ürün Miktari" />
+            <TableColumn fx:id="birimFiyat" prefWidth="76.0" text="Birim Fiyat" />
+            <TableColumn fx:id="toplamFiyat" prefWidth="92.0" text="Toplam Fiyat" />
+        </columns>
+      </TableView>
+      <TextField fx:id="gelirText" editable="false" layoutX="567.0" layoutY="97.0" prefHeight="26.0" prefWidth="82.0" />
+      <TextField fx:id="giderText" editable="false" layoutX="567.0" layoutY="165.0" prefHeight="26.0" prefWidth="82.0" />
+      <TextField fx:id="kdvText" editable="false" layoutX="567.0" layoutY="241.0" prefHeight="26.0" prefWidth="82.0" />
+      <Line endX="345.10711669921875" endY="-0.70001220703125" layoutX="318.0" layoutY="286.0" startX="-100.0" />
+      <TextField fx:id="kdvOranText" layoutX="440.0" layoutY="206.0" prefHeight="26.0" prefWidth="98.0" promptText="Kdv Oranı-%" />
+      <Pane layoutX="499.0" layoutY="374.0" prefHeight="220.0" prefWidth="151.0">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#musteriSil" prefHeight="30.0" prefWidth="112.0" style="-fx-background-radius: 8; -fx-background-color: DODGERBLUE;" text="Müşteri Sil" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#faturaGoster" prefHeight="30.0" prefWidth="112.0" style="-fx-background-radius: 8; -fx-background-color: DODGERBLUE;" text="Faturaları göster" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button layoutX="14.0" layoutY="126.0" mnemonicParsing="false" onAction="#faturaSil" prefHeight="30.0" prefWidth="112.0" style="-fx-background-radius: 8; -fx-background-color: DODGERBLUE;" text="Fatura Sil" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Line endX="184.814208984375" endY="-18.192895889282227" layoutX="478.0" layoutY="28.0" startX="184.60711669921875" startY="256.79998779296875" />
+      <Line endX="553.8998413085938" layoutX="108.0" layoutY="302.0" startX="-99.50000762939453" />
+      <Line endX="-112.60009765625" endY="228.0" layoutX="774.0" layoutY="384.0" startX="-112.60009765625" startY="-81.5" />
+      <Line endX="-1.239776611328125E-5" endY="-0.5" layoutX="8.0" layoutY="302.0" startX="-1.0000061988830566" startY="310.0" />
+      <Line endX="546.8998413085938" endY="5.5" layoutX="114.0" layoutY="607.0" startX="-106.50001525878906" startY="4.5" />
+   </children>
+</AnchorPane>
